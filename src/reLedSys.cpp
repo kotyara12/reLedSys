@@ -201,6 +201,13 @@ void ledSysFlashOn(const uint16_t quantity, const uint16_t duration, const uint1
   };
 }
 
+void ledSysActivity()
+{
+  if (_ledSysQueue) {
+    ledTaskSend(_ledSysQueue, lmFlash, CONFIG_LEDSYS_FLASH_QUANTITY, CONFIG_LEDSYS_FLASH_DURATION, CONFIG_LEDSYS_FLASH_INTERVAL);
+  };
+}
+
 void ledSysBlinkOn(const uint16_t quantity, const uint16_t duration, const uint16_t interval)
 {
   if (_ledSysQueue) {
